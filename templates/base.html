@@ -1,11 +1,35 @@
 <!DOCTYPE html>
 <html lang="de">
-  <head>
+<head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Quizzler</title>
-  </head>
-  <body>
-    {%block content %} {% endblock %}
-  </body>
+    <title>{{ title if title else "Quizzler" }}</title>
+
+    <!-- Tailwind CSS (CDN-Version) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-gray-50 text-gray-900 flex flex-col min-h-screen">
+
+    <!-- Header / Navigation -->
+    <header class="bg-blue-600 text-white py-4 shadow">
+        <div class="container mx-auto flex justify-between items-center px-4">
+            <h1 class="text-2xl font-bold">Quizzler 🧠</h1>
+            <nav>
+                <a href="/login" class="ml-4 hover:underline">Login</a>
+                <a href="/register" class="ml-4 hover:underline">Registrieren</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hauptinhalt -->
+    <main class="flex-grow container mx-auto px-4 py-12">
+        {% block content %}{% endblock %}
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-gray-300 text-center py-4 mt-8">
+        © {{ 2025 }} Quizzler | Lernen mit Spaß 🎯
+    </footer>
+</body>
 </html>
