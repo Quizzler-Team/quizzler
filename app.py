@@ -9,6 +9,18 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False  # Disable overhead warning
 
 db = SQLAlchemy(app)
 
+# Define a simple User model
+class User(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(80), unique=True, nullable=False)
+    password = db.Column(db.String(80), unique=False, nullable=False)
+
+    def __repr__(self):
+        return f"<User {self.id} ({self.name})>"
+
+with app.app_context():
+    db.create_all()
+
 @app.route("/")
 def index():
     return render_template("index.html")
