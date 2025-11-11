@@ -1,7 +1,14 @@
 ## Quizzler App
 
-## Änderung
+#### Requirements:
 
-## Änderung 2
+- Python (3 or higher)
 
-## Aenderung trölfzig
+- Python Libraries: Flask, SQLAlchemy
+
+Flask: `pip install flask`
+SQLAlchemy: `pip install sqlalchemy`
+
+### Quick Start
+
+Run `app.py`.
