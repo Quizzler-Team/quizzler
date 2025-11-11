@@ -1,5 +1,7 @@
 from flask import Flask, render_template
 from flask_sqlalchemy import SQLAlchemy
+from user import register, verify
+
 
 app = Flask(__name__)
 
@@ -22,11 +24,32 @@ class User(db.Model):
 with app.app_context():
     db.create_all()
 
+    # try registering
+    hashed=(register("test", "testpassword"))
+    print(f'remove before use: Hash is {hashed}')
+    # try logging in
+    # read hashed value for user from db and store in hashed
+    entered_password="testpassword"
+    print("real password")
+    logged=(verify(hashed, entered_password))
+    if logged==True:
+        print("logged in")
+    else:
+        print("not logged in")
+    entered_password="falschespasswort"
+    print("wrong password")
+    logged=(verify(hashed, entered_password))
+    if logged==True:
+        print("logged in")
+    else:
+        print("not logged in")
+
 @app.route("/")
 def index():
     return render_template("index.html")
 
 if __name__ == "__main__":
     app.run(debug=True)
+    print(password)
 
 
