@@ -1,4 +1,4 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, flash
 import flask_login
 from flask_sqlalchemy import SQLAlchemy
 from user import register, verify
