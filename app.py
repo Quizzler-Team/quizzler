@@ -1,4 +1,5 @@
 from flask import Flask, render_template
+import flask_login
 from flask_sqlalchemy import SQLAlchemy
 from user import register, verify
 
@@ -50,6 +51,5 @@ def index():
 
 if __name__ == "__main__":
     app.run(debug=True)
-    print(password)
 
 
