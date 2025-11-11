@@ -8,3 +8,7 @@
 
 Flask: `pip install flask`
 SQLAlchemy: `pip install sqlalchemy`
+
+### Quick Start
+
+Run `app.py`.
