@@ -1,0 +1,48 @@
+{% extends 'base.html' %} {% block title %}Login{% endblock %} {% block content
+%}
+<div class="flex justify-center">
+  <a href="{{ url_for('index') }}"
+    ><h1 class="mt-8 font-hegarty text-3xl md:text-5xl text-center">
+      Quizzler
+    </h1>
+  </a>
+</div>
+
+<div class="flex items-center mt-10 flex-col">
+  <div class="p-4 bg-sky-800 text-white rounded shadow-lg shadow-sky-900">
+    <h2 class="text-xl text-center sansation-regular">Login</h2>
+    {% with messages = get_flashed_messages(with_categories=true) %} {% for
+    category, message in messages %}
+    <p
+      class="mt-2 rounded text-center bg-rose-200 text-rose-700 p-2 text-sm sansation-regular"
+    >
+      {{ message }}
+    </p>
+    {% endfor %} {% endwith %}
+    <form method="post">
+      <input
+        type="text"
+        name="username"
+        placeholder="Username"
+        required
+        class="p-1 my-3 bg-sky-600 rounded sansation-regular"
+      /><br />
+      <input
+        type="password"
+        name="password"
+        placeholder="Password"
+        class="p-1 my-3 bg-sky-600 rounded sansation-regular"
+        required
+      /><br />
+      <div class="flex justify-center">
+        <button
+          type="submit"
+          class="bg-sky-600 px-2 py-1 rounded hover:cursor-pointer border-2 border-white hover:bg-sky-400 sansation-regular"
+        >
+          Login
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
+{% endblock %}

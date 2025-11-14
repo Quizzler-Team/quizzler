@@ -1,0 +1,17 @@
+{% extends 'base.html' %} {% block content %}
+<div class="py-2 px-7 flex justify-end">
+  <a
+    class="px-2 py-1 rounded bg-rose-600 text-white sansation-regular hover:bg-rose-400 border-3 border-rose-900 hover:scale-105 transition duration-100 ease-in-out"
+    href="{{ url_for('logout') }}"
+    >Logout</a
+  >
+</div>
+
+<div class="flex justify-center flex-col">
+  <h1 class="mt-4 font-hegarty text-3xl md:text-5xl text-center">
+    User Bereich
+  </h1>
+  <h2 class="text-center pt-4 sansation-regular text-xl">Wilkommen</h2>
+  <div class="bg-sky-600 h-1 w-full"></div>
+</div>
+{% endblock %}
