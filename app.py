@@ -1,6 +1,5 @@
 from flask import Flask, render_template
 from flask_sqlalchemy import SQLAlchemy
-from flask_login import LoginManager, UserMixin # <<<< Neu hinzugefügt
 
 app = Flask(__name__)
 
@@ -10,22 +9,10 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False  # Disable overhead warning
 
 db = SQLAlchemy(app)
 
-# --- Flask-Login Initialisierung ---
-login_manager = LoginManager()
-login_manager.init_app(app)
-login_manager.login_view = 'login'
-login_manager.login_message = 'Sie müssen sich anmelden, um diese Seite aufzurufen.'
-
 # --- Datenbankmodelle --- 
 
-# user Loader für Flask-Login (MUSS VOR der User-Klasse stehen, damit Flask-Login weiß, wie es Benutzer lädt)
-@login_manager.user_loader
-def load_user(user_id):
-    # Lädt den Nutzer anhand der user_id
-    return User.query.get(int(user_id))
-
 # User-Modell: Erweitert um UserMixin und Quiz-Beziehung
-class User(db.Model, UserMixin):
+class User(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     
     # KORREKTUR: Dies ist das Haupt-Login-Feld
@@ -89,11 +76,6 @@ class Answer(db.Model):
 @app.route("/")
 def index():
     return render_template("index.html")
-
-# Die Login, die der Login-Manager als Ziel benötigt
-@app.route("/login")
-def login():
-    return render_template("login.html")
 
 # --- Start der Anwendung ---
 if __name__ == "__main__":
